@@ -3,14 +3,21 @@ package hello.hellospring.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 
+@Service
 public class MemberService {
 	
-	private final MemberRepository memberRepository = new MemoryMemberRepository();
+	private final MemberRepository memberRepository;
 	
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
 	// 리포지토리는 직관적인 개발의 입장.
 	// 서비스는 비지니스 로직.
 	
@@ -27,7 +34,7 @@ public class MemberService {
 	private void validateDuplicateMember(Member member) {
 		memberRepository.findByName(member.getName())
 				.ifPresent(m -> {
-					throw new IllegalAccessError("이미 존재하는 회원입니다.");
+					throw new IllegalStateException("이미 존재하는 회원입니다.");
 				});
 	}
 	

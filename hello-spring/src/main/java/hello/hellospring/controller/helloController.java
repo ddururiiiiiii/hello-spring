@@ -21,7 +21,7 @@ public class helloController {
         return "hello-template";
     }
 	
-	//@ResponseBody : http 프로토콜의 바디 부분에 직접 넣어주겠다.
+	//@ResponseBody : http 프로토콜의 바디 부분에 직접 넣어주겠다.view-resolver사용 안함. 
 	//xml이 무겁고 불편해서 json으로 반환한다 보통.
 	@GetMapping("hello-string")
 	@ResponseBody
