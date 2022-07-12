@@ -23,6 +23,6 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
      // return new MemoryMemberRepository();
      // return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
-    }
+		return new JdbcTemplateMemberRepository(dataSource);
+	}
 }
